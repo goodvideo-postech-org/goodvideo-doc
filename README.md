@@ -12,6 +12,10 @@ Trabalho final da Pós Tech FIAP (2025).
 
 [Sonar](https://sonarcloud.io/organizations/goodvideo-postech-org/projects?sort=name)
 
+## Event storming
+
+[Link do board no Miro](https://miro.com/app/board/uXjVLxYrinA=/?share_link_id=903786219199)
+
 ## Diagramas
 
 Para editar, abrir os diagramas no [App Diagrams.net](https://app.diagrams.net/)
