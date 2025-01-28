@@ -48,6 +48,7 @@ Trabalho final da Pós Tech FIAP (2025).
   - Todas as APIs são protegidas com autenticação JWT, garantindo que apenas usuários autenticados tenham acesso ao sistema.
   - Dados em trânsito são protegidos por **HTTPS**, e dados armazenados em repouso (como arquivos temporários) podem ser criptografados com ferramentas da AWS.
   - O broker Kafka é acessível apenas pela rede interna da cloud, aumentando a segurança contra acessos externos.
+  - Os serviços da núvem AWS são configurados dentro de uma **VPC (Virtual Private Cloud)** para isolar a rede e proteger o acesso. A VPC garante que o banco só possa ser acessado pelos serviços autorizados dentro do ambiente de produção.
 - **Conformidade com LGPD:**
   - O sistema armazena informações mínimas e evita dados sensíveis de usuários.
   - Vídeos são excluídos automaticamente após o processamento, e arquivos ZIP são armazenados por, no máximo, 24 horas.
