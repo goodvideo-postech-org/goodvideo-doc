@@ -14,6 +14,17 @@ Trabalho final da Pós Tech FIAP (2025).
 ## Event storming / DDD
 [Link do board no Miro](https://miro.com/app/board/uXjVLxYrinA=/?share_link_id=903786219199)
 
+## Decisões de negócio
+- O usuário precisará de cadastro prévio para poder utilizar a plataforma;
+- A senha do usuário deverá ser criptografada no banco;
+- O arquivo deverá ser no formato mp4/video;
+- O vídeo será limitado no tamanho de 10Mb;
+- Cada usuário deverá possuir uma pasta com seus respectivos processamentos salvos também em pastas;
+- O arquivo de vídeo deverá ser excluído após o processamento;
+- O arquivo ZIP terá validade de 24h após o processamento;
+- Caso ocorra algum erro durante o processamento, o usuário será notificado e deverá reenviar o vídeo para nova tentativa;
+- Caso ocorra algum erro, tanto o vídeo quanto o ZIP devem ser apagados.
+
 ## Arquitetura Geral
 - **Plataforma:** 
   - O sistema utiliza a AWS como base, aproveitando ferramentas integradas e opções gratuitas (free tier) para prototipação e desenvolvimento. A escolha foi baseada na familiaridade do time e no suporte robusto da plataforma.
