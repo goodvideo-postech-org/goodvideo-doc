@@ -3,10 +3,24 @@ Documentação geral do projeto goodvideo.
 Trabalho final da Pós Tech FIAP (2025).  
 [Descrição do desafio.](doc/Hack%20SOAT%206_7.pdf)
 
+## Requisitos 
+- **A nova versão do sistema deve processar mais de um vídeo ao mesmo tempo;**
+  - O [Serviço Upload](https://github.com/goodvideo-postech-org/goodvideo-upload) aceita requisições assíncronas e publica o vídeo em um bucket e, em seguida publica uma mensagem em um tópico kafka para o [Serviço Processamento](https://github.com/goodvideo-postech-org/goodvideo-video-processor) que consome as mensagens de forma assíncrona, sem travar o processo para que um próximo vídeo seja publicado enquanto os anteriores estão no processo de extração de imagens e geração do ZIP.
+- **Em caso de picos o sistema não deve perder uma requisição;**
+  - Nossas aplicações contam com configurações de Horizontal Pod Autoscaling, que ao identificar um uso excessivo, sobe uma nova instância de forma horizontal, adicionando um novo POD ao cluster.
+- **O Sistema deve ser protegido por usuário e senha;**
+  - Nosso [Serviço Usuário](https://github.com/goodvideo-postech-org/goodvideo-auth) é responsável pelo gerenciamento dos usuários, bem como o fornecimento de tokens de acesso aos demais serviços
+- **O fluxo deve ter uma listagem de status dos vídeos de um usuário;**
+  - Endpoint disponível no serviço de Upload, na rota "/listar" 
+- **Em caso de erro um usuário pode ser notificado (email ou um outro meio de comunicação)**
+  - Ao identificar a falha durante um processamento, o usuário é notificado via email que foi informado no cadastro sobre qual processamento ocorreu erro.
+
 ## Repositórios
 - [Serviço Usuário](https://github.com/goodvideo-postech-org/goodvideo-auth)
 - [Serviço Upload](https://github.com/goodvideo-postech-org/goodvideo-upload)
 - [Serviço Processamento](https://github.com/goodvideo-postech-org/goodvideo-video-processor)
+- [Terraform Infra](https://github.com/goodvideo-postech-org/goodvideo-terraform-eks)
+- [Terraform BD](https://github.com/goodvideo-postech-org/goodvideo-terraform-rds)
 
 ## Sonar
 [Sonar](https://sonarcloud.io/organizations/goodvideo-postech-org/projects?sort=name)
@@ -15,7 +29,7 @@ Trabalho final da Pós Tech FIAP (2025).
 [Link do board no Miro](https://miro.com/app/board/uXjVLxYrinA=/?share_link_id=903786219199)
 
 ## Decisões de negócio
-- O usuário precisará de cadastro prévio para poder utilizar a plataforma;
+- O usuário precisará realizar cadastro para poder utilizar a plataforma, informando seu nome, email e senha;
 - A senha do usuário deverá ser criptografada no banco;
 - O arquivo deverá ser no formato mp4/video;
 - O vídeo será limitado no tamanho de 10Mb;
@@ -93,8 +107,8 @@ Para editar, abrir os diagramas no [App Diagrams.net](https://app.diagrams.net/)
 - JWT;
 - Kubernetes;
 
-# Equipe
+# Equipe 25
 Carlos Bridi - RM355971  
-Nicollas P. Eissmann - RM355576  
 Daniel R. Martini - RM355054  
+Nicollas P. Eissmann - RM355576  
 Roberto Debarba - RM355038
